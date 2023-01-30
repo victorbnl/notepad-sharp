@@ -21,6 +21,7 @@ private slots:
     void actionNew();
     void actionSave();
     void actionSaveAs();
+    void actionClose();
 
 private:
     Ui::Notepad *ui;

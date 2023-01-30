@@ -39,6 +39,13 @@ void Notepad::actionSaveAs()
         currentEditor->saveAs();
 }
 
+void Notepad::actionClose()
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+        currentEditor->close();
+}
+
 Editor* Notepad::getCurrentEditor()
 {
     return ui->editorTabs->currentEditor();

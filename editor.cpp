@@ -10,6 +10,8 @@
 Editor::Editor()
 {
     setFont(QFont("monospace"));
+
+    connect(this, &QPlainTextEdit::textChanged, this, &Editor::setModified);
 }
 
 
@@ -34,9 +36,28 @@ void Editor::save(bool askForPath)
     ofstream << content;
 
     file.close();
+
+    mModified = false;
 }
 
 void Editor::saveAs()
 {
     save(true);
+}
+
+void Editor::close()
+{
+    if (mModified)
+    {
+        return;
+    }
+    else
+    {
+        emit closed();
+    }
+}
+
+void Editor::setModified()
+{
+    mModified = true;
 }

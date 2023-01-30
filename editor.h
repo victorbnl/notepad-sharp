@@ -14,13 +14,19 @@ public:
 
 signals:
     void pathChanged(QString newPath);
+    void closed();
 
 public slots:
     void save(bool askForPath = false);
     void saveAs();
+    void close();
+
+private slots:
+    void setModified();
 
 private:
     QString mPath;
+    bool mModified;
 };
 
 #endif // EDITOR_H

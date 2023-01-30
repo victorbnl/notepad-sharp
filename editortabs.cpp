@@ -15,6 +15,7 @@ int EditorTabs::addEditor(Editor* editor)
     setCurrentIndex(index);
 
     connect(editor, &Editor::pathChanged, this, &EditorTabs::setTabTitle);
+    connect(editor, &Editor::closed, this, &EditorTabs::removeEditor);
 
     return index;
 }
@@ -34,4 +35,10 @@ void EditorTabs::setTabTitle(QString path)
 
     int editorIndex = indexOf((QWidget*)sender());
     setTabText(editorIndex, filename);
+}
+
+void EditorTabs::removeEditor()
+{
+    int editorIndex = indexOf((QWidget*)sender());
+    removeTab(editorIndex);
 }
