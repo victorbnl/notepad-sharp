@@ -16,6 +16,8 @@ public:
     ~Notepad();
 
 private slots:
+    void onCurrentEditorTabChanged();
+
     void actionNew();
 
 private:
