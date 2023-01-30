@@ -28,7 +28,11 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="EditorTabs" name="editorTabs"/>
+     <widget class="EditorTabs" name="editorTabs">
+      <property name="tabsClosable">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -117,6 +121,9 @@
    <extends>QTabWidget</extends>
    <header>editortabs.h</header>
    <container>1</container>
+   <slots>
+    <slot>closeEditorAt(int)</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -198,6 +205,22 @@
     <hint type="destinationlabel">
      <x>399</x>
      <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editorTabs</sender>
+   <signal>tabCloseRequested(int)</signal>
+   <receiver>editorTabs</receiver>
+   <slot>closeEditorAt(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>318</y>
     </hint>
    </hints>
   </connection>

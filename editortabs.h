@@ -18,6 +18,7 @@ public:
 
 public slots:
     void setTabTitle(QString path);
+    void closeEditorAt(int index);
     void removeEditor();
 };
 

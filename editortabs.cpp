@@ -37,6 +37,11 @@ void EditorTabs::setTabTitle(QString path)
     setTabText(editorIndex, filename);
 }
 
+void EditorTabs::closeEditorAt(int index)
+{
+    ((Editor*)widget(index))->close();
+}
+
 void EditorTabs::removeEditor()
 {
     int editorIndex = indexOf((QWidget*)sender());
