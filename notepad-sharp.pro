@@ -9,17 +9,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    closedialog.cpp \
     editor.cpp \
     editortabs.cpp \
     main.cpp \
     notepad.cpp
 
 HEADERS += \
+    closedialog.h \
     editor.h \
     editortabs.h \
     notepad.h
 
 FORMS += \
+    closedialog.ui \
     notepad.ui
 
 CONFIG += lrelease

@@ -7,6 +7,8 @@
 #include <QFile>
 #include <QTextStream>
 
+#include "closedialog.h"
+
 Editor::Editor()
 {
     setFont(QFont("monospace"));
@@ -49,7 +51,22 @@ void Editor::close()
 {
     if (mModified)
     {
-        return;
+        CloseDialog dialog;
+        dialog.setModal(true);
+        if (dialog.exec() == QDialog::Accepted)
+        {
+            switch (dialog.getAction())
+            {
+                case CloseAction::SAVE:
+                    save();
+                    emit closed();
+                    break;
+
+                case CloseAction::DISCARD:
+                    emit closed();
+                    break;
+            }
+        }
     }
     else
     {
