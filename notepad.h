@@ -15,6 +15,9 @@ public:
     Notepad(QWidget *parent = nullptr);
     ~Notepad();
 
+private slots:
+    void actionNew();
+
 private:
     Ui::Notepad *ui;
 };
