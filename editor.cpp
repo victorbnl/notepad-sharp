@@ -20,7 +20,7 @@ Editor::Editor(QString path, QString content)
 }
 
 
-void Editor::save(bool askForPath)
+bool Editor::save(bool askForPath)
 {
     QString content = toPlainText();
 
@@ -28,14 +28,14 @@ void Editor::save(bool askForPath)
     {
         mPath = QFileDialog::getSaveFileName(nullptr, QString(), mPath);
         if (mPath == "")
-            return;
+            return false;
         emit pathChanged(mPath);
     }
 
     QFile file(mPath);
     file.open(QIODevice::WriteOnly);
     if (!file.isOpen())
-        return;
+        return false;
 
     QTextStream ofstream(&file);
     ofstream << content;
@@ -43,11 +43,13 @@ void Editor::save(bool askForPath)
     file.close();
 
     mModified = false;
+
+    return true;
 }
 
-void Editor::saveAs()
+bool Editor::saveAs()
 {
-    save(true);
+    return save(true);
 }
 
 void Editor::close()
@@ -61,8 +63,8 @@ void Editor::close()
             switch (dialog.getAction())
             {
                 case CloseAction::SAVE:
-                    save();
-                    emit closed();
+                    if (save())
+                        emit closed();
                     break;
 
                 case CloseAction::DISCARD:

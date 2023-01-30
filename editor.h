@@ -17,8 +17,8 @@ signals:
     void closed();
 
 public slots:
-    void save(bool askForPath = false);
-    void saveAs();
+    bool save(bool askForPath = false);
+    bool saveAs();
     void close();
 
 private slots:
