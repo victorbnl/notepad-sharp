@@ -10,7 +10,7 @@ class Editor : public QPlainTextEdit
     Q_OBJECT
 
 public:
-    Editor();
+    Editor(QString path = "", QString content = "");
 
 signals:
     void pathChanged(QString newPath);

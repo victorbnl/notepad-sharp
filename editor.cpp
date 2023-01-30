@@ -9,9 +9,12 @@
 
 #include "closedialog.h"
 
-Editor::Editor()
+Editor::Editor(QString path, QString content)
 {
     setFont(QFont("monospace"));
+
+    mPath = path;
+    setPlainText(content);
 
     connect(this, &QPlainTextEdit::textChanged, this, &Editor::setModified);
 }

@@ -3,6 +3,9 @@
 
 #include <QAction>
 
+#include <QFileDialog>
+#include <QTextStream>
+
 #include "editortabs.h"
 #include "editor.h"
 
@@ -22,6 +25,24 @@ void Notepad::actionNew()
 {
     EditorTabs* editorTabs = (EditorTabs*)(ui->editorTabs);
     Editor* editor = new Editor();
+    editorTabs->addEditor(editor);
+}
+
+void Notepad::actionOpen()
+{
+    QString path = QFileDialog::getOpenFileName();
+    if (path == "")
+        return;
+
+    QFile file(path);
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+        return;
+
+    QTextStream ifstream(&file);
+    QString content = ifstream.readAll();
+
+    EditorTabs* editorTabs = (EditorTabs*)(ui->editorTabs);
+    Editor* editor = new Editor(path, content);
     editorTabs->addEditor(editor);
 }
 

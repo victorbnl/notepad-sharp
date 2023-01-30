@@ -19,6 +19,7 @@ public:
 
 private slots:
     void actionNew();
+    void actionOpen();
     void actionSave();
     void actionSaveAs();
     void actionClose();
