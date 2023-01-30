@@ -4,7 +4,7 @@
 
 #include "editor.h"
 
-EditorTabs::EditorTabs()
+EditorTabs::EditorTabs(QWidget *parent)
 {
 
 }

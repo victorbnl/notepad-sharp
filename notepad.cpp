@@ -11,9 +11,6 @@ Notepad::Notepad(QWidget *parent)
     , ui(new Ui::Notepad)
 {
     ui->setupUi(this);
-
-    EditorTabs* editorTabs = (EditorTabs*)(ui->editorTabs);
-    connect(editorTabs, &EditorTabs::currentChanged, this, &Notepad::onCurrentEditorTabChanged);
 }
 
 Notepad::~Notepad()
@@ -21,19 +18,28 @@ Notepad::~Notepad()
     delete ui;
 }
 
-
-void Notepad::onCurrentEditorTabChanged()
-{
-    EditorTabs* editorTabs = (EditorTabs*)ui->editorTabs;
-    Editor* currentEditor = editorTabs->currentEditor();
-    connect(ui->actionSave, &QAction::triggered, currentEditor, &Editor::save);
-    connect(ui->actionSaveAs, &QAction::triggered, currentEditor, &Editor::saveAs);
-}
-
-
 void Notepad::actionNew()
 {
     EditorTabs* editorTabs = (EditorTabs*)(ui->editorTabs);
     Editor* editor = new Editor();
     editorTabs->addEditor(editor);
+}
+
+void Notepad::actionSave()
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+        currentEditor->save();
+}
+
+void Notepad::actionSaveAs()
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+        currentEditor->saveAs();
+}
+
+Editor* Notepad::getCurrentEditor()
+{
+    return ui->editorTabs->currentEditor();
 }

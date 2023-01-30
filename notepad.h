@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "editor.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Notepad; }
 QT_END_NAMESPACE
@@ -16,11 +18,12 @@ public:
     ~Notepad();
 
 private slots:
-    void onCurrentEditorTabChanged();
-
     void actionNew();
+    void actionSave();
+    void actionSaveAs();
 
 private:
     Ui::Notepad *ui;
+    Editor* getCurrentEditor();
 };
 #endif // NOTEPAD_H

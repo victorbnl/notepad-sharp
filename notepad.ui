@@ -28,7 +28,7 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QTabWidget" name="editorTabs"/>
+     <widget class="EditorTabs" name="editorTabs"/>
     </item>
    </layout>
   </widget>
@@ -91,6 +91,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>EditorTabs</class>
+   <extends>QTabWidget</extends>
+   <header>editortabs.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -109,8 +117,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionSave</sender>
+   <signal>triggered()</signal>
+   <receiver>Notepad</receiver>
+   <slot>actionSave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSaveAs</sender>
+   <signal>triggered()</signal>
+   <receiver>Notepad</receiver>
+   <slot>actionSaveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>actionNew()</slot>
+  <slot>actionSave()</slot>
+  <slot>actionSaveAs()</slot>
  </slots>
 </ui>

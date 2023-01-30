@@ -12,7 +12,7 @@ class EditorTabs : public QTabWidget
     Q_OBJECT
 
 public:
-    EditorTabs();
+    EditorTabs(QWidget *parent = nullptr);
     int addEditor(Editor* editor);
     Editor* currentEditor();
 
