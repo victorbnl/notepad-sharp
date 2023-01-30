@@ -16,7 +16,8 @@ signals:
     void pathChanged(QString newPath);
 
 public slots:
-    void save();
+    void save(bool askForPath = false);
+    void saveAs();
 
 private:
     QString mPath;

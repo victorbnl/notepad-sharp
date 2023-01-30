@@ -13,11 +13,11 @@ Editor::Editor()
 }
 
 
-void Editor::save()
+void Editor::save(bool askForPath)
 {
     QString content = toPlainText();
 
-    if (mPath == "")
+    if (askForPath || mPath == "")
     {
         mPath = QFileDialog::getSaveFileName(nullptr, QString(), mPath);
         if (mPath == "")
@@ -34,4 +34,9 @@ void Editor::save()
     ofstream << content;
 
     file.close();
+}
+
+void Editor::saveAs()
+{
+    save(true);
 }

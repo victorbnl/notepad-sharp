@@ -27,6 +27,7 @@ void Notepad::onCurrentEditorTabChanged()
     EditorTabs* editorTabs = (EditorTabs*)ui->editorTabs;
     Editor* currentEditor = editorTabs->currentEditor();
     connect(ui->actionSave, &QAction::triggered, currentEditor, &Editor::save);
+    connect(ui->actionSaveAs, &QAction::triggered, currentEditor, &Editor::saveAs);
 }
 
 
