@@ -1,5 +1,7 @@
 #include "editor.h"
 
+#include <QFont>
+
 #include <QString>
 #include <QFileDialog>
 #include <QFile>
@@ -7,7 +9,7 @@
 
 Editor::Editor()
 {
-
+    setFont(QFont("monospace"));
 }
 
 
