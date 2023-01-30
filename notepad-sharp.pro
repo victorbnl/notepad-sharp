@@ -10,13 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    notepad.cpp
 
 HEADERS += \
-    mainwindow.h
+    notepad.h
 
 FORMS += \
-    mainwindow.ui
+    notepad.ui
 
 CONFIG += lrelease
 
