@@ -15,7 +15,7 @@ public:
     Editor(QString path = "");
 
 signals:
-    void pathChanged(QString newPath);
+    void titleChanged(QString title);
     void closed();
 
 public slots:
@@ -24,11 +24,13 @@ public slots:
     void close();
 
 private slots:
-    void setModified();
+    void setAsModified();
 
 private:
     TextFile mFile;
     bool mModified;
+    QString title();
+    void setModified(bool modified);
 };
 
 #endif // EDITOR_H

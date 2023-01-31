@@ -14,7 +14,7 @@ int EditorTabs::addEditor(Editor* editor)
     int index = addTab(editor, "Untitled");
     setCurrentIndex(index);
 
-    connect(editor, &Editor::pathChanged, this, &EditorTabs::setTabTitle);
+    connect(editor, &Editor::titleChanged, this, &EditorTabs::setTabTitle);
     connect(editor, &Editor::closed, this, &EditorTabs::removeEditor);
 
     return index;
@@ -26,15 +26,10 @@ Editor* EditorTabs::currentEditor()
 }
 
 
-void EditorTabs::setTabTitle(QString path)
+void EditorTabs::setTabTitle(QString title)
 {
-    QFileInfo fileInfo(path);
-    QString filename = fileInfo.fileName();
-    if (filename == "")
-        filename = "Untitled";
-
     int editorIndex = indexOf((QWidget*)sender());
-    setTabText(editorIndex, filename);
+    setTabText(editorIndex, title);
 }
 
 void EditorTabs::closeEditorAt(int index)

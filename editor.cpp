@@ -18,7 +18,28 @@ Editor::Editor(QString path)
         setPlainText(mFile.content());
     mModified = false;
 
-    connect(this, &QPlainTextEdit::textChanged, this, &Editor::setModified);
+    connect(this, &QPlainTextEdit::textChanged, this, &Editor::setAsModified);
+}
+
+QString Editor::title()
+{
+    QFileInfo fileInfo(mFile.fileName());
+    QString fileName = fileInfo.fileName();
+    if (fileName == "")
+        fileName = "Untitled";
+
+    QString title = "";
+    if (mModified)
+        title += "* ";
+    title += fileName;
+
+    return title;
+}
+
+void Editor::setModified(bool modified)
+{
+    mModified = modified;
+    emit titleChanged(title());
 }
 
 
@@ -33,12 +54,12 @@ bool Editor::save(bool askForPath)
         if (path == "")
             return false;
         mFile.setFileName(path);
-        emit pathChanged(path);
+        emit titleChanged(title());
     }
 
     bool success = mFile.write(content);
     if (success)
-        mModified = false;
+        setModified(false);
 
     return success;
 }
@@ -75,7 +96,8 @@ void Editor::close()
     }
 }
 
-void Editor::setModified()
+void Editor::setAsModified()
 {
-    mModified = true;
+    setModified(true);
+    emit titleChanged(title());
 }
