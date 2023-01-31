@@ -9,12 +9,14 @@
 
 #include "closedialog.h"
 
-Editor::Editor(QString path, QString content)
+Editor::Editor(QString path)
 {
     setFont(QFont("monospace"));
 
-    mPath = path;
-    setPlainText(content);
+    TextFile mFile(path);
+    if (path != "")
+        setPlainText(mFile.content());
+    mModified = false;
 
     connect(this, &QPlainTextEdit::textChanged, this, &Editor::setModified);
 }
@@ -24,27 +26,21 @@ bool Editor::save(bool askForPath)
 {
     QString content = toPlainText();
 
-    if (askForPath || mPath == "")
+    QString path = mFile.fileName();
+    if (askForPath || path == "")
     {
-        mPath = QFileDialog::getSaveFileName(nullptr, QString(), mPath);
-        if (mPath == "")
+        path = QFileDialog::getSaveFileName();
+        if (path == "")
             return false;
-        emit pathChanged(mPath);
+        mFile.setFileName(path);
+        emit pathChanged(path);
     }
 
-    QFile file(mPath);
-    file.open(QIODevice::WriteOnly);
-    if (!file.isOpen())
-        return false;
+    bool success = mFile.write(content);
+    if (success)
+        mModified = false;
 
-    QTextStream ofstream(&file);
-    ofstream << content;
-
-    file.close();
-
-    mModified = false;
-
-    return true;
+    return success;
 }
 
 bool Editor::saveAs()

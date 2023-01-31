@@ -34,15 +34,8 @@ void Notepad::actionOpen()
     if (path == "")
         return;
 
-    QFile file(path);
-    if (!file.open(QFile::ReadOnly | QFile::Text))
-        return;
-
-    QTextStream ifstream(&file);
-    QString content = ifstream.readAll();
-
     EditorTabs* editorTabs = (EditorTabs*)(ui->editorTabs);
-    Editor* editor = new Editor(path, content);
+    Editor* editor = new Editor(path);
     editorTabs->addEditor(editor);
 }
 

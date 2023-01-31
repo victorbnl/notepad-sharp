@@ -5,12 +5,14 @@
 
 #include <QString>
 
+#include "textfile.h"
+
 class Editor : public QPlainTextEdit
 {
     Q_OBJECT
 
 public:
-    Editor(QString path = "", QString content = "");
+    Editor(QString path = "");
 
 signals:
     void pathChanged(QString newPath);
@@ -25,7 +27,7 @@ private slots:
     void setModified();
 
 private:
-    QString mPath;
+    TextFile mFile;
     bool mModified;
 };
 

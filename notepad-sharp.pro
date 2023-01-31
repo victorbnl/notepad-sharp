@@ -13,13 +13,15 @@ SOURCES += \
     editor.cpp \
     editortabs.cpp \
     main.cpp \
-    notepad.cpp
+    notepad.cpp \
+    textfile.cpp
 
 HEADERS += \
     closedialog.h \
     editor.h \
     editortabs.h \
-    notepad.h
+    notepad.h \
+    textfile.h
 
 FORMS += \
     closedialog.ui \
