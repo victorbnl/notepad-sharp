@@ -13,7 +13,7 @@ Editor::Editor(QString path)
 {
     setFont(QFont("monospace"));
 
-    TextFile mFile(path);
+    mFile.setFileName(path);
     if (path != "")
         setPlainText(mFile.content());
     mModified = false;

@@ -11,7 +11,7 @@ EditorTabs::EditorTabs(QWidget *parent)
 
 int EditorTabs::addEditor(Editor* editor)
 {
-    int index = addTab(editor, "Untitled");
+    int index = addTab(editor, editor->title());
     setCurrentIndex(index);
 
     connect(editor, &Editor::titleChanged, this, &EditorTabs::setTabTitle);

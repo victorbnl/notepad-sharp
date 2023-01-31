@@ -13,6 +13,7 @@ class Editor : public QPlainTextEdit
 
 public:
     Editor(QString path = "");
+    QString title();
 
 signals:
     void titleChanged(QString title);
@@ -29,7 +30,6 @@ private slots:
 private:
     TextFile mFile;
     bool mModified;
-    QString title();
     void setModified(bool modified);
 };
 
