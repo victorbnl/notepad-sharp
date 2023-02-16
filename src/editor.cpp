@@ -36,6 +36,7 @@ QString Editor::title()
     return title;
 }
 
+
 void Editor::setModified(bool modified)
 {
     mModified = modified;

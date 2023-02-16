@@ -25,6 +25,12 @@ Notepad::~Notepad()
     delete ui;
 }
 
+
+Editor* Notepad::getCurrentEditor()
+{
+    return ui->editorTabs->currentEditor();
+}
+
 void Notepad::onCurrentEditorTabChanged(int /* index */)
 {
     Editor* currentEditor = ui->editorTabs->currentEditor();
@@ -69,9 +75,4 @@ void Notepad::actionClose()
     Editor* currentEditor = getCurrentEditor();
     if (currentEditor)
         currentEditor->close();
-}
-
-Editor* Notepad::getCurrentEditor()
-{
-    return ui->editorTabs->currentEditor();
 }
