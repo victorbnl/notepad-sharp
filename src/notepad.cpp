@@ -8,17 +8,28 @@
 
 #include "editortabs.h"
 #include "editor.h"
+#include "statusbar.h"
 
 Notepad::Notepad(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Notepad)
 {
     ui->setupUi(this);
+
+    EditorTabs* editorTabs = ui->editorTabs;
+    connect(editorTabs, &EditorTabs::currentChanged, this, &Notepad::onCurrentEditorTabChanged);
 }
 
 Notepad::~Notepad()
 {
     delete ui;
+}
+
+void Notepad::onCurrentEditorTabChanged(int /* index */)
+{
+    Editor* currentEditor = ui->editorTabs->currentEditor();
+    StatusBar* statusBar = ui->statusbar;
+    statusBar->setEditor(currentEditor);
 }
 
 void Notepad::actionNew()

@@ -20,11 +20,13 @@ set(
     src/editortabs.cpp
     src/main.cpp
     src/notepad.cpp
+    src/statusbar.cpp
     src/textfile.cpp
     include/closedialog.h
     include/editor.h
     include/editortabs.h
     include/notepad.h
+    include/statusbar.h
     include/textfile.h
     forms/closedialog.ui
     forms/notepad.ui

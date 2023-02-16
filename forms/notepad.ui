@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>34</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -60,7 +60,7 @@
    </widget>
    <addaction name="menuFile"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="StatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
     <string>toolBar</string>
@@ -127,6 +127,11 @@
    <slots>
     <slot>closeEditorAt(int)</slot>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>StatusBar</class>
+   <extends>QStatusBar</extends>
+   <header>statusbar.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -18,6 +18,8 @@ public:
     ~Notepad();
 
 private slots:
+    void onCurrentEditorTabChanged(int index);
+
     void actionNew();
     void actionOpen();
     void actionSave();
