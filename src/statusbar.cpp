@@ -12,7 +12,8 @@ StatusBar::StatusBar(QWidget *parent)
 void StatusBar::setEditor(Editor* editor)
 {
     mEditor = editor;
-    connect(mEditor, &QPlainTextEdit::cursorPositionChanged, this, &StatusBar::updateCursorPosition);
+    if (mEditor != NULL)
+        connect(mEditor, &QPlainTextEdit::cursorPositionChanged, this, &StatusBar::updateCursorPosition);
     updateCursorPosition();
 }
 
