@@ -26,6 +26,14 @@ Notepad::~Notepad()
 }
 
 
+void Notepad::openFile(QString path)
+{
+    EditorTabs* editorTabs = (EditorTabs*)(ui->editorTabs);
+    Editor* editor = new Editor(path);
+    editorTabs->addEditor(editor);
+}
+
+
 Editor* Notepad::getCurrentEditor()
 {
     return ui->editorTabs->currentEditor();
@@ -51,9 +59,7 @@ void Notepad::actionOpen()
     if (path == "")
         return;
 
-    EditorTabs* editorTabs = (EditorTabs*)(ui->editorTabs);
-    Editor* editor = new Editor(path);
-    editorTabs->addEditor(editor);
+    openFile(path);
 }
 
 void Notepad::actionSave()

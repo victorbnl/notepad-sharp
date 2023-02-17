@@ -14,7 +14,7 @@ Editor::Editor(QString path)
     setFont(QFont("monospace"));
 
     mFile.setFileName(path);
-    if (path != "")
+    if (mFile.exists())
         setPlainText(mFile.content());
     mModified = false;
 

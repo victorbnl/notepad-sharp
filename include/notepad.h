@@ -16,6 +16,7 @@ class Notepad : public QMainWindow
 public:
     Notepad(QWidget *parent = nullptr);
     ~Notepad();
+    void openFile(QString path);
 
 private slots:
     void onCurrentEditorTabChanged(int index);
