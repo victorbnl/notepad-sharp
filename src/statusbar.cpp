@@ -4,6 +4,9 @@
 
 StatusBar::StatusBar(QWidget *parent)
 {
+    statsLabel = new QLabel(this);
+    addWidget(statsLabel);
+
     positionLabel = new QLabel(this);
     addWidget(positionLabel);
 }
@@ -13,8 +16,24 @@ void StatusBar::setEditor(Editor* editor)
 {
     mEditor = editor;
     if (mEditor != NULL)
+    {
+        connect(mEditor, &QPlainTextEdit::textChanged, this, &StatusBar::updateStats);
         connect(mEditor, &QPlainTextEdit::cursorPositionChanged, this, &StatusBar::updateCursorPosition);
+    }
+    updateStats();
     updateCursorPosition();
+}
+
+void StatusBar::updateStats()
+{
+    if (mEditor == NULL)
+    {
+        statsLabel->setText("");
+        return;
+    }
+
+    int length = mEditor->document()->characterCount();
+    statsLabel->setText(QString("Length: %1").arg(length));
 }
 
 void StatusBar::updateCursorPosition()

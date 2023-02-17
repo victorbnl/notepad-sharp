@@ -17,10 +17,13 @@ public:
     void setEditor(Editor* editor);
 
 public slots:
+    void updateStats();
     void updateCursorPosition();
 
 private:
     Editor* mEditor;
+
+    QLabel* statsLabel;
     QLabel* positionLabel;
 };
 
