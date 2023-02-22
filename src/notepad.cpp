@@ -80,7 +80,15 @@ void Notepad::onCurrentEditorTabChanged(int index)
         else
             currentEditorLineWrapEnabled = false;
         ui->actionToggleLineWrap->setChecked(currentEditorLineWrapEnabled);
+
+        currentEditorConnections.push_back(connect(currentEditor, &Editor::titleChanged, this, &Notepad::setTitle));
+        setTitle(currentEditor->title());
     }
+}
+
+void Notepad::setTitle(QString title)
+{
+    setWindowTitle(QString("%1 - Notepad#").arg(title));
 }
 
 void Notepad::actionNew()

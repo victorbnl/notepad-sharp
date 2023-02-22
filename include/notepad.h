@@ -23,6 +23,7 @@ public:
 
 private slots:
     void onCurrentEditorTabChanged(int index);
+    void setTitle(QString title);
     void actionNew();
     void actionOpen();
 
