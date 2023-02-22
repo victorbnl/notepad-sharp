@@ -18,6 +18,7 @@ class Notepad : public QMainWindow
 public:
     Notepad(QWidget *parent = nullptr);
     ~Notepad();
+    void closeEvent(QCloseEvent *event);
     void openFile(QString path);
 
 private slots:
