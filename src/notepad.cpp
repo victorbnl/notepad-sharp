@@ -96,3 +96,16 @@ void Notepad::actionRedo()
     if (currentEditor)
         currentEditor->redo();
 }
+
+void Notepad::actionSetLineWrap(bool enabled)
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+    {
+        QPlainTextEdit::LineWrapMode currentMode = currentEditor->lineWrapMode();
+        if (currentMode == QPlainTextEdit::LineWrapMode::WidgetWidth)
+            currentEditor->setLineWrapMode(QPlainTextEdit::LineWrapMode::NoWrap);
+        else
+            currentEditor->setLineWrapMode(QPlainTextEdit::LineWrapMode::WidgetWidth);
+    }
+}

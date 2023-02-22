@@ -28,6 +28,7 @@ private slots:
     void actionClose();
     void actionUndo();
     void actionRedo();
+    void actionSetLineWrap(bool enabled);
 
 private:
     Ui::Notepad *ui;
