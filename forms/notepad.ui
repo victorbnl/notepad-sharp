@@ -129,6 +129,9 @@
    <property name="allowedAreas">
     <set>Qt::BottomDockWidgetArea</set>
    </property>
+   <property name="visible" stdset="0">
+    <bool>false</bool>
+   </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
    </attribute>
@@ -315,7 +318,8 @@
   </action>
   <action name="actionFind">
    <property name="icon">
-    <iconset theme="edit-find"/>
+    <iconset theme="edit-find">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Find</string>
