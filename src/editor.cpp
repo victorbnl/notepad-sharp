@@ -14,6 +14,7 @@
 
 Editor::Editor(QString path)
 {
+    setFrameStyle(QFrame::NoFrame);
     setFont(QFont("monospace"));
 
     mFile.setFileName(path);
