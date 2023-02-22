@@ -1,6 +1,8 @@
 #ifndef NOTEPAD_H
 #define NOTEPAD_H
 
+#include <vector>
+#include <QMetaObject>
 #include <QMainWindow>
 
 #include "editor.h"
@@ -20,24 +22,11 @@ public:
 
 private slots:
     void onCurrentEditorTabChanged(int index);
-
     void actionNew();
     void actionOpen();
-    void actionSave();
-    void actionSaveAs();
-    void actionClose();
-
-    void actionCut();
-    void actionCopy();
-    void actionPaste();
-
-    void actionUndo();
-    void actionRedo();
-
-    void actionSetLineWrap(bool enabled);
 
 private:
     Ui::Notepad *ui;
-    Editor* getCurrentEditor();
+    std::vector<QMetaObject::Connection> currentEditorConnections;
 };
 #endif // NOTEPAD_H

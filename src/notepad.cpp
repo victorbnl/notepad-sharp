@@ -34,16 +34,24 @@ void Notepad::openFile(QString path)
 }
 
 
-Editor* Notepad::getCurrentEditor()
-{
-    return ui->editorTabs->currentEditor();
-}
-
 void Notepad::onCurrentEditorTabChanged(int /* index */)
 {
     Editor* currentEditor = ui->editorTabs->currentEditor();
+
     StatusBar* statusBar = ui->statusbar;
     statusBar->setEditor(currentEditor);
+
+    for (QMetaObject::Connection connection : currentEditorConnections)
+        disconnect(connection);
+    currentEditorConnections.push_back(connect(ui->actionSave, &QAction::triggered, currentEditor, &Editor::save));
+    currentEditorConnections.push_back(connect(ui->actionSaveAs, &QAction::triggered, currentEditor, &Editor::saveAs));
+    currentEditorConnections.push_back(connect(ui->actionClose, &QAction::triggered, currentEditor, &Editor::close));
+    currentEditorConnections.push_back(connect(ui->actionCut, &QAction::triggered, currentEditor, &Editor::cut));
+    currentEditorConnections.push_back(connect(ui->actionCopy, &QAction::triggered, currentEditor, &Editor::copy));
+    currentEditorConnections.push_back(connect(ui->actionPaste, &QAction::triggered, currentEditor, &Editor::paste));
+    currentEditorConnections.push_back(connect(ui->actionUndo, &QAction::triggered, currentEditor, &Editor::undo));
+    currentEditorConnections.push_back(connect(ui->actionRedo, &QAction::triggered, currentEditor, &Editor::redo));
+    currentEditorConnections.push_back(connect(ui->actionToggleLineWrap, &QAction::triggered, currentEditor, &Editor::setLineWrap));
 }
 
 void Notepad::actionNew()
@@ -60,73 +68,4 @@ void Notepad::actionOpen()
         return;
 
     openFile(path);
-}
-
-void Notepad::actionSave()
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-        currentEditor->save();
-}
-
-void Notepad::actionSaveAs()
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-        currentEditor->saveAs();
-}
-
-void Notepad::actionClose()
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-        currentEditor->close();
-}
-
-void Notepad::actionCut()
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-        currentEditor->cut();
-}
-
-void Notepad::actionCopy()
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-        currentEditor->copy();
-}
-
-void Notepad::actionPaste()
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-        currentEditor->paste();
-}
-
-void Notepad::actionUndo()
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-        currentEditor->undo();
-}
-
-void Notepad::actionRedo()
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-        currentEditor->redo();
-}
-
-void Notepad::actionSetLineWrap(bool enabled)
-{
-    Editor* currentEditor = getCurrentEditor();
-    if (currentEditor)
-    {
-        QPlainTextEdit::LineWrapMode currentMode = currentEditor->lineWrapMode();
-        if (currentMode == QPlainTextEdit::LineWrapMode::WidgetWidth)
-            currentEditor->setLineWrapMode(QPlainTextEdit::LineWrapMode::NoWrap);
-        else
-            currentEditor->setLineWrapMode(QPlainTextEdit::LineWrapMode::WidgetWidth);
-    }
 }

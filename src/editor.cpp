@@ -97,6 +97,14 @@ void Editor::close()
     }
 }
 
+void Editor::setLineWrap(bool enabled)
+{
+    if (enabled)
+        setLineWrapMode(QPlainTextEdit::LineWrapMode::WidgetWidth);
+    else
+        setLineWrapMode(QPlainTextEdit::LineWrapMode::NoWrap);
+}
+
 void Editor::setAsModified()
 {
     setModified(true);
