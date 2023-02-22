@@ -46,6 +46,7 @@ void Notepad::onCurrentEditorTabChanged(int /* index */)
     currentEditorConnections.push_back(connect(ui->actionSave, &QAction::triggered, currentEditor, &Editor::save));
     currentEditorConnections.push_back(connect(ui->actionSaveAs, &QAction::triggered, currentEditor, &Editor::saveAs));
     currentEditorConnections.push_back(connect(ui->actionClose, &QAction::triggered, currentEditor, &Editor::close));
+    currentEditorConnections.push_back(connect(ui->actionPrint, &QAction::triggered, currentEditor, &Editor::print));
     currentEditorConnections.push_back(connect(ui->actionCut, &QAction::triggered, currentEditor, &Editor::cut));
     currentEditorConnections.push_back(connect(ui->actionCopy, &QAction::triggered, currentEditor, &Editor::copy));
     currentEditorConnections.push_back(connect(ui->actionPaste, &QAction::triggered, currentEditor, &Editor::paste));

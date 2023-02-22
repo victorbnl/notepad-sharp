@@ -9,7 +9,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt5 REQUIRED COMPONENTS Widgets PrintSupport)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS forms)
 
@@ -37,6 +37,6 @@ add_executable(
     ${PROJECT_SOURCES}
 )
 
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE Qt5::Widgets)
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE Qt5::Widgets Qt5::PrintSupport)
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC include)

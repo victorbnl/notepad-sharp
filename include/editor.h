@@ -23,6 +23,7 @@ public slots:
     bool save(bool askForPath = false);
     bool saveAs();
     void close();
+    void print();
     void setLineWrap(bool enabled);
 
 private slots:

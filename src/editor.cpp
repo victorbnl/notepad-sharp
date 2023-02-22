@@ -7,6 +7,9 @@
 #include <QFile>
 #include <QTextStream>
 
+#include <QPrinter>
+#include <QPrintDialog>
+
 #include "closedialog.h"
 
 Editor::Editor(QString path)
@@ -95,6 +98,16 @@ void Editor::close()
     {
         emit closed();
     }
+}
+
+void Editor::print()
+{
+    QPrinter printer;
+    QPrintDialog *dialog = new QPrintDialog(&printer, this);
+    if (dialog->exec() != QDialog::Accepted)
+        return;
+
+    QPlainTextEdit::print(&printer);
 }
 
 void Editor::setLineWrap(bool enabled)
