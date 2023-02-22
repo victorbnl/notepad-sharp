@@ -27,16 +27,8 @@ Notepad::~Notepad()
 
 void Notepad::closeEvent(QCloseEvent *event)
 {
-    for (int i = ui->editorTabs->count(); i > 0; i--)
-    {
-        Editor* editor = (Editor*)ui->editorTabs->widget(i - 1);
-        editor->close();
-    }
-
-    if (ui->editorTabs->count() == 0)
-        event->accept();
-    else
-        event->ignore();
+    quit();
+    event->ignore();
 }
 
 
@@ -105,4 +97,16 @@ void Notepad::actionOpen()
         return;
 
     openFile(path);
+}
+
+void Notepad::quit()
+{
+    for (int i = ui->editorTabs->count(); i > 0; i--)
+    {
+        Editor* editor = (Editor*)ui->editorTabs->widget(i - 1);
+        editor->close();
+    }
+
+    if (ui->editorTabs->count() == 0)
+        qApp->exit();
 }

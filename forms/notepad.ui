@@ -65,6 +65,7 @@
     <addaction name="actionPrint"/>
     <addaction name="separator"/>
     <addaction name="actionClose"/>
+    <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -284,6 +285,17 @@
     <string>Ctrl+P</string>
    </property>
   </action>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset theme="window-close"/>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -351,9 +363,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>Notepad</receiver>
+   <slot>quit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>actionNew()</slot>
   <slot>actionOpen()</slot>
+  <slot>quit()</slot>
  </slots>
 </ui>
