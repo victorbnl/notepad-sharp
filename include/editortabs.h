@@ -14,7 +14,6 @@ class EditorTabs : public QTabWidget
 public:
     EditorTabs(QWidget *parent = nullptr);
     int addEditor(Editor* editor);
-    Editor* currentEditor();
 
 public slots:
     void setTabTitle(QString title);

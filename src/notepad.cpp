@@ -50,7 +50,7 @@ void Notepad::openFile(QString path)
 
 void Notepad::onCurrentEditorTabChanged(int index)
 {
-    Editor* currentEditor = ui->editorTabs->currentEditor();
+    Editor* currentEditor = (Editor*)ui->editorTabs->widget(index);
 
     StatusBar* statusBar = ui->statusbar;
     if (index != -1)

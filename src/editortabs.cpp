@@ -20,11 +20,6 @@ int EditorTabs::addEditor(Editor* editor)
     return index;
 }
 
-Editor* EditorTabs::currentEditor()
-{
-    return (Editor*)currentWidget();
-}
-
 
 void EditorTabs::setTabTitle(QString title)
 {
