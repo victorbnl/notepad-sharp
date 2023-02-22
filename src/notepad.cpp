@@ -52,6 +52,8 @@ void Notepad::onCurrentEditorTabChanged(int /* index */)
     currentEditorConnections.push_back(connect(ui->actionUndo, &QAction::triggered, currentEditor, &Editor::undo));
     currentEditorConnections.push_back(connect(ui->actionRedo, &QAction::triggered, currentEditor, &Editor::redo));
     currentEditorConnections.push_back(connect(ui->actionToggleLineWrap, &QAction::triggered, currentEditor, &Editor::setLineWrap));
+    currentEditorConnections.push_back(connect(ui->actionZoomIn, &QAction::triggered, currentEditor, [currentEditor]{ currentEditor->zoomIn(2); }));
+    currentEditorConnections.push_back(connect(ui->actionZoomOut, &QAction::triggered, currentEditor, [currentEditor]{ currentEditor->zoomOut(2); }));
 
     bool currentEditorLineWrapEnabled;
     if (currentEditor->lineWrapMode() == QPlainTextEdit::LineWrapMode::WidgetWidth)
