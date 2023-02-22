@@ -9,6 +9,7 @@
 #include "editortabs.h"
 #include "editor.h"
 #include "statusbar.h"
+#include "findform.h"
 
 Notepad::Notepad(QWidget *parent)
     : QMainWindow(parent)
@@ -75,6 +76,8 @@ void Notepad::onCurrentEditorTabChanged(int index)
 
         currentEditorConnections.push_back(connect(currentEditor, &Editor::titleChanged, this, &Notepad::setTitle));
         setTitle(currentEditor->title());
+
+        ui->dockWidget->setVisible(false);
     }
 }
 
@@ -97,6 +100,16 @@ void Notepad::actionOpen()
         return;
 
     openFile(path);
+}
+
+void Notepad::showFind()
+{
+    QDockWidget* dockWidget = ui->dockWidget;
+    Editor* currentEditor = (Editor*)ui->editorTabs->currentWidget();
+    FindForm* findForm = new FindForm(currentEditor, this);
+    dockWidget->setWidget(findForm);
+    dockWidget->setVisible(true);
+    connect(findForm, &FindForm::close, dockWidget, [dockWidget]{ dockWidget->setVisible(false); });
 }
 
 void Notepad::quit()

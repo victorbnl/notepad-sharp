@@ -40,6 +40,21 @@ QString Editor::title()
     return title;
 }
 
+void Editor::find(QString text)
+{
+    QTextCursor cursor = textCursor();
+
+    const QString string = toPlainText();
+    int pos = string.indexOf(text, cursor.position());
+    if (pos == -1)
+        return;
+
+    cursor.setPosition(pos, QTextCursor::MoveAnchor);
+    cursor.setPosition(pos+text.length(), QTextCursor::KeepAnchor);
+
+    setTextCursor(cursor);
+}
+
 
 void Editor::setModified(bool modified)
 {

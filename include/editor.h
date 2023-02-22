@@ -14,6 +14,7 @@ class Editor : public QPlainTextEdit
 public:
     Editor(QString path = "");
     QString title();
+    void find(QString text);
 
 signals:
     void titleChanged(QString title);

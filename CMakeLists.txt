@@ -18,6 +18,7 @@ set(
     src/closedialog.cpp
     src/editor.cpp
     src/editortabs.cpp
+    src/findform.cpp
     src/main.cpp
     src/notepad.cpp
     src/statusbar.cpp
@@ -25,10 +26,12 @@ set(
     include/closedialog.h
     include/editor.h
     include/editortabs.h
+    include/findform.h
     include/notepad.h
     include/statusbar.h
     include/textfile.h
     forms/closedialog.ui
+    forms/findform.ui
     forms/notepad.ui
 )
 

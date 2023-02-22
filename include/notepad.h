@@ -26,6 +26,7 @@ private slots:
     void setTitle(QString title);
     void actionNew();
     void actionOpen();
+    void showFind();
     void quit();
 
 private:
