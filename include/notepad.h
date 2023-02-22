@@ -26,8 +26,14 @@ private slots:
     void actionSave();
     void actionSaveAs();
     void actionClose();
+
+    void actionCut();
+    void actionCopy();
+    void actionPaste();
+
     void actionUndo();
     void actionRedo();
+
     void actionSetLineWrap(bool enabled);
 
 private:

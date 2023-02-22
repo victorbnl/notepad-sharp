@@ -83,6 +83,27 @@ void Notepad::actionClose()
         currentEditor->close();
 }
 
+void Notepad::actionCut()
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+        currentEditor->cut();
+}
+
+void Notepad::actionCopy()
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+        currentEditor->copy();
+}
+
+void Notepad::actionPaste()
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+        currentEditor->paste();
+}
+
 void Notepad::actionUndo()
 {
     Editor* currentEditor = getCurrentEditor();
