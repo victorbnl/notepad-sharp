@@ -82,3 +82,17 @@ void Notepad::actionClose()
     if (currentEditor)
         currentEditor->close();
 }
+
+void Notepad::actionUndo()
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+        currentEditor->undo();
+}
+
+void Notepad::actionRedo()
+{
+    Editor* currentEditor = getCurrentEditor();
+    if (currentEditor)
+        currentEditor->redo();
+}
