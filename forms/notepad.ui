@@ -129,9 +129,6 @@
    <property name="allowedAreas">
     <set>Qt::BottomDockWidgetArea</set>
    </property>
-   <property name="visible" stdset="0">
-    <bool>false</bool>
-   </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
    </attribute>
