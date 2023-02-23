@@ -34,6 +34,7 @@ set(
     forms/findform.ui
     forms/notepad.ui
     icons/icons.qrc
+    i18n/i18n.qrc
 )
 
 add_executable(
