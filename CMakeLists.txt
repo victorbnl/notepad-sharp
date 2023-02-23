@@ -33,6 +33,7 @@ set(
     forms/closedialog.ui
     forms/findform.ui
     forms/notepad.ui
+    icons/icons.qrc
 )
 
 add_executable(

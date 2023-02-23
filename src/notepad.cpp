@@ -1,6 +1,8 @@
 #include "notepad.h"
 #include "ui_notepad.h"
 
+#include <QPalette>
+
 #include <QAction>
 
 #include <QFileDialog>
@@ -15,6 +17,17 @@ Notepad::Notepad(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Notepad)
 {
+    if (qApp->platformName() != "xcb")
+    {
+        QString mode;
+        const int textLightness = palette().color(QPalette::WindowText).value();
+        if (textLightness > 125)
+            mode = "dark";
+        else
+            mode = "light";
+        QIcon::setThemeName("fallback-" + mode);
+    }
+
     ui->setupUi(this);
     ui->dockWidget->setVisible(false);
 
