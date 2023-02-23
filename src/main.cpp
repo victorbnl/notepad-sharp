@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
     QCommandLineParser parser;
     parser.addPositionalArgument("file", "");
     parser.process(app);
-
     const QStringList args = parser.positionalArguments();
     if (args.count() > 0)
     {

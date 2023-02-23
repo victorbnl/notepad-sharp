@@ -31,7 +31,7 @@ Notepad::Notepad(QWidget *parent)
     ui->setupUi(this);
     ui->dockWidget->setVisible(false);
 
-    EditorTabs* editorTabs = ui->editorTabs;
+    const EditorTabs* editorTabs = ui->editorTabs;
     connect(editorTabs, &EditorTabs::currentChanged, this, &Notepad::onCurrentEditorTabChanged);
 }
 
