@@ -118,8 +118,10 @@ void Notepad::actionOpen()
 
 void Notepad::showFind()
 {
-    QDockWidget* dockWidget = ui->dockWidget;
     Editor* currentEditor = (Editor*)ui->editorTabs->currentWidget();
+    if (currentEditor == nullptr)
+        return;
+    QDockWidget* dockWidget = ui->dockWidget;
     FindForm* findForm = new FindForm(currentEditor, this);
     dockWidget->setWidget(findForm);
     dockWidget->setVisible(true);
