@@ -1,6 +1,6 @@
 #include "editor.h"
 
-#include <QFont>
+#include <QFontDatabase>
 
 #include <QString>
 #include <QFileDialog>
@@ -15,7 +15,7 @@
 Editor::Editor(QString path)
 {
     setFrameStyle(QFrame::NoFrame);
-    setFont(QFont("monospace"));
+    setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 
     mFile.setFileName(path);
     if (mFile.exists())
