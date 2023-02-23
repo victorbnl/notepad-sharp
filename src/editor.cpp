@@ -47,7 +47,13 @@ void Editor::find(QString text)
     const QString string = toPlainText();
     int pos = string.indexOf(text, cursor.position());
     if (pos == -1)
-        return;
+    {
+        pos = string.indexOf(text);
+        if (pos == -1)
+        {
+            return;
+        }
+    }
 
     cursor.setPosition(pos, QTextCursor::MoveAnchor);
     cursor.setPosition(pos+text.length(), QTextCursor::KeepAnchor);
