@@ -32,7 +32,7 @@ void StatusBar::updateStats()
         return;
     }
 
-    int length = mEditor->document()->characterCount();
+    int length = mEditor->document()->characterCount() - 1;
     statsLabel->setText(QString("Length: %1").arg(length));
 }
 
